@@ -1,5 +1,5 @@
 import { Button, Card, CardContent, Grid, Link, TextField, Typography } from '@mui/material'
-import { Link as RouterLink } from 'react-router-dom';
+import { Link as RouterLink, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../hooks/useAuth';
 import { useForm } from 'react-hook-form';
 import { SignIn } from '../../interfaces';
@@ -9,11 +9,12 @@ export const SignInComponent = () => {
 
   const { signin, loading, error } = useAuth();
   const { register, handleSubmit, formState: { errors } } = useForm<SignIn>();
+  const navigate = useNavigate();
 
   const onSubmit = async (data: SignIn) => {
     try {
-      console.log('Submitting data:', data);
       await signin(data);
+      navigate('/dashboard');
     } catch (err) {
       console.error('Login error:', err);
     }
