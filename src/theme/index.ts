@@ -11,11 +11,11 @@ export const getTheme = (mode: "light" | "dark") =>
         main: "#9c27b0",
       },
       background: {
-        default: mode === "light" ? "#f5f5f5" : "#121212",
-        paper: mode === "light" ? "#fff" : "#1d1d1d",
+        default: mode === "light" ? "#fff" : "#121212",
+        paper: mode === "light" ? "#f5f5f5" : "#1d1d1d",
       },
     },
     typography: {
-      fontFamily: "'Roboto', sans-serif",
+      fontFamily: "'Exo', sans-serif",
     },
 });

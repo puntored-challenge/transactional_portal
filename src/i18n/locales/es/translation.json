@@ -1,0 +1,5 @@
+{
+    "Username or password is incorrect": "El nombre de usuario o la contraseña son incorrectos",
+    "Token invalid": "Token inválido",
+    "User with username {{username}} already exists": "El usuario con nombre de usuario {{username}} ya existe"
+}

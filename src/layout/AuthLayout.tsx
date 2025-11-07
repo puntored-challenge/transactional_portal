@@ -1,6 +1,7 @@
 import { Outlet } from "react-router-dom";
 import { ThemeToggle } from '../components/common/ThemeToggle';
-import { Box, Typography } from "@mui/material";
+import { Box } from "@mui/material";
+import LogoComponent from "../components/common/LogoComponent";
 
 export const AuthLayout = () => {
   return (
@@ -9,9 +10,14 @@ export const AuthLayout = () => {
         minHeight: "100dvh",
         display: "flex",
         flexDirection: "column",
+        backgroundImage: 'url("https://puntored.co/wp-content/uploads/2025/01/Banner_home.png?lm=6792BFE3")',
+        backgroundSize: "50%",
+        backgroundRepeat: "no-repeat",
+        alignContent: "center",
+        backgroundPosition: "right center",
       }}
+
     >
-      {/* Header */}
       <Box 
         width="100%"
         display="flex"
@@ -19,14 +25,13 @@ export const AuthLayout = () => {
         alignItems="center"
         padding={2}
       >
-        <Typography>AuthLayout</Typography>
+        <LogoComponent />
         <ThemeToggle />
       </Box>
 
-      {/* Contenedor central */}
       <Box
         sx={{
-          flexGrow: 1, // ocupa el espacio restante
+          flexGrow: 1,
           display: "flex",
           justifyContent: "center",
           alignItems: "center",

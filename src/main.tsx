@@ -5,6 +5,7 @@ import AppRoutes from './routes/AppRoutes'
 import { Provider, useSelector } from 'react-redux';
 import { RootState, store } from './store/index'
 import { ThemeProvider, CssBaseline } from '@mui/material';
+import './i18n'
 
 import { getTheme } from './theme';
 

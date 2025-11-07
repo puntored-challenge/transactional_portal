@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import { AuthLayout } from "../layout/AuthLayout";
-import { MainLayout } from "../layout/MainLayout";
 import { LoginComponent } from '../components/auth/LoginComponent';
+import { SignInComponent } from "../components/auth/SignInComponent";
 
 const AppRoutes: React.FC = () => {
     return (
@@ -9,6 +9,7 @@ const AppRoutes: React.FC = () => {
             {/* Rutas públicas */}
             <Route path="/auth" element={<AuthLayout />}>
                 <Route path="" element={<LoginComponent />} />
+                <Route path="signin" element={<SignInComponent />} />
             </Route>
         </Routes>
     );

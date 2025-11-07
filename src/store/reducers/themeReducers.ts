@@ -1,4 +1,3 @@
-import { PayloadAction } from "@reduxjs/toolkit";
 import { ThemeState } from "../interfaces";
 
 export const toggleMode = (state: ThemeState) => {
