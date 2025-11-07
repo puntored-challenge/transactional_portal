@@ -1,14 +1,15 @@
-import { Button, Card, CardContent, FormControl, Grid, InputLabel, Select, TextField, Typography } from '@mui/material'
+import { Box, Button, Card, CardContent, FormControl, Grid, InputLabel, MenuItem, Select, SelectChangeEvent, TextField, Typography } from '@mui/material'
 import { registerFieldTransaction } from '../../misc'
-import { Transaction } from '../../interfaces';
+import { Supplier, Transaction } from '../../interfaces';
 import { useForm } from 'react-hook-form';
 import { useTransaction } from '../../hooks/useTransaction';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 
 const TransactionComponet = () => {
   const { register, handleSubmit, formState: { errors } } = useForm<Transaction>();
-  const {error,loading,getSuppliers} = useTransaction();
-  const [suppliers, setSupplier] = useState([]);
+  const { error, loading, getSuppliers } = useTransaction();
+  const [suppliers, setSupplier] = useState<Supplier[]>([]);
+  const [selectedSupplier, setSelectedSupplier] = useState("");
 
   useEffect(() => {
     const fetchSuppliers = async () => {
@@ -18,7 +19,7 @@ const TransactionComponet = () => {
       console.log('Suppliers state:', loading, error, suppliers);
     };
     fetchSuppliers();
-  },[])
+  }, [setSupplier])
 
   const onSubmit = async (data: Transaction) => {
     try {
@@ -27,6 +28,11 @@ const TransactionComponet = () => {
       console.error('Login error:', err);
     }
   };
+
+  const handleSupplierChange = useCallback((event: SelectChangeEvent<string>) => {
+    setSelectedSupplier(event.target.value);
+  }, [suppliers]);
+
   return (
     <Card
       sx={{
@@ -79,18 +85,39 @@ const TransactionComponet = () => {
                 errors
               })}
             />
-            {/* <FormControl fullWidth>
-              <InputLabel id="demo-simple-select-label">Age</InputLabel>
-              <Select
-                labelId="demo-simple-select-label"
-                id="demo-simple-select"
-                value={age}
-                label="Age"
-                onChange={handleChange}
+            <Box
+              display="flex"
+              justifyContent="center"
+              alignItems="center"
+              width="100%"
+            >
+              <FormControl
+                sx={{
+                  width: { xs: '90%', md: '80%' }, // ancho responsive
+                }}
               >
-                <MenuItem value={10}>Ten</MenuItem>
-              </Select>
-            </FormControl> */}
+                <InputLabel id="supplier-select-label">Proveedor</InputLabel>
+                <Select
+                  labelId="supplier-select-label"
+                  id="supplier-select"
+                  value={selectedSupplier}
+                  label="Proveedor"
+                  {...registerFieldTransaction({
+                    name: 'supplierId',
+                    rules: { required: 'Proveedor es requerido' },
+                    register,
+                    errors,
+                  })}
+                  onChange={handleSupplierChange}
+                >
+                  {suppliers.map((supplier) => (
+                    <MenuItem key={supplier.id} value={supplier.id}>
+                      {supplier.name}
+                    </MenuItem>
+                  ))}
+                </Select>
+              </FormControl>
+            </Box>
             <TextField
               placeholder="Ingrese el monto"
               variant="outlined"

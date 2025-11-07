@@ -3,3 +3,8 @@ export interface Transaction {
   supplierId: string;
   value: number;
 }
+
+export interface Supplier {
+  id: string;
+  name: string
+}

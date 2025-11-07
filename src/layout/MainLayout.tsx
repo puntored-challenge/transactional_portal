@@ -2,6 +2,7 @@ import { Box } from "@mui/material";
 import LogoComponent from "../components/common/LogoComponent";
 import { ThemeToggle } from "../components/common/ThemeToggle";
 import { Outlet } from "react-router-dom";
+import { LogoutComponent } from "../components/auth/LogoutComponent";
 
 export const MainLayout = () => {
   return (
@@ -18,7 +19,7 @@ export const MainLayout = () => {
       }}
 
     >
-      <Box 
+      <Box
         width="100%"
         display="flex"
         justifyContent="space-between"
@@ -26,7 +27,13 @@ export const MainLayout = () => {
         padding={2}
       >
         <LogoComponent />
-        <ThemeToggle />
+        <Box 
+          display={'flex'}
+          gap={2}
+        >
+          <ThemeToggle/>
+          <LogoutComponent />
+        </Box>
       </Box>
 
       <Box
