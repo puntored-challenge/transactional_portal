@@ -6,11 +6,27 @@ import { loginService, signinService } from '../services/auth.service'
 import { useDispatch } from 'react-redux';
 import { setToken, logout as logoutState } from '../store/slice/authSlice';
 
+export interface UseAuthReturn {
+  loading: boolean;
+  error: string;
+  login: (credentials: Login) => Promise<any>;
+  signin: (signin: SignIn) => Promise<any>;
+  logout: () => void;
+}
+
+
+/**
+ * useAuth
+ *
+ * Hook personalizado que maneja la autenticación de usuarios.
+ * Proporciona estado de carga, errores y funciones para login, signup y logout.
+ *
+ */
 export function useAuth() {
   const dispatch = useDispatch();
-  const { t } = useTranslation()
-  const [loading, setLoading] = useState(false)
-  const [error, setError] = useState("")
+  const { t } = useTranslation();
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
 
   const login = async (credentials: Login) => {
@@ -18,29 +34,27 @@ export function useAuth() {
     setLoading(true)
     try {
       const data = await loginService(credentials)
-      const token = data.data.token;
-      localStorage.setItem('token', token)
-      dispatch(setToken(token))
-      return data
+      const token = data.token;
+      localStorage.setItem('token', token);
+      dispatch(setToken(token));
     } catch (err: any) {
       console.error(err);
-      const msg = err?.response?.data.message || 'Error desconocido'
-      setError(t(msg))
-      throw err
+      const msg = err?.response?.data.message || 'Error desconocido';
+      setError(t(msg));
+      throw err;
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
   }
 
   const signin = async (signin: SignIn) => {
-    setError('')
-    setLoading(true)
+    setError('');
+    setLoading(true);
     try {
-      const data = await signinService(signin)
-      const token = data.data.token;
-      localStorage.setItem('token', token)
-      dispatch(setToken(token))
-      return data
+      const data = await signinService(signin);
+      const token = data.token;
+      localStorage.setItem('token', token);
+      dispatch(setToken(token));
     } catch (err: any) {
       console.error(err);
 
@@ -56,13 +70,13 @@ export function useAuth() {
       setError(msg);
       throw err;
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
   }
 
   const logout = () => {
-    localStorage.removeItem('token')
-    dispatch(logoutState())
+    localStorage.removeItem('token');
+    dispatch(logoutState());
   }
 
   return {

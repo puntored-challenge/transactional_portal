@@ -3,6 +3,13 @@ import { ThemeToggle } from '../components/common/ThemeToggle';
 import { Box } from "@mui/material";
 import LogoComponent from "../components/common/LogoComponent";
 
+/**
+ * AuthLayout
+ *
+ * Componente de React que proporciona el layout para páginas de autenticación,
+ * como login, registro o recuperación de contraseña. Generalmente incluye
+ * encabezado, pie de página y un contenedor central para el contenido principal.
+ */
 export const AuthLayout = () => {
   return (
     <Box

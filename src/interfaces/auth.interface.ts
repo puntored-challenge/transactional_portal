@@ -7,3 +7,7 @@ export interface SignIn extends Login {
   name: string;
   lastname: string;
 }
+
+export interface AuthResponse {
+  token: string;
+}

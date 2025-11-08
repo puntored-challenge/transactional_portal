@@ -1,6 +1,6 @@
 import { FieldErrors, UseFormRegister } from "react-hook-form";
 import { Login, SignIn } from "./auth.interface";
-import { Transaction } from "./transaction.interface";
+import { Recharge } from "./transaction.interface";
 
 export interface RegisterFieldProps {
   name: "name" | "lastname" | "username" | "password";
@@ -12,6 +12,18 @@ export interface RegisterFieldProps {
 export interface RegisterFieldTransactionProps {
   name: "cellPhone" | "supplierId" | "value"
   rules: object;
-  register: UseFormRegister<Transaction>;
-  errors: FieldErrors<Transaction>;
+  register: UseFormRegister<Recharge>;
+  errors: FieldErrors<Recharge>;
+}
+
+export interface MessageDialog {
+  title: string;
+  message: string;
+  confirmationText: string;
+  redirectTo?: string;
+}
+
+export interface messageDialogState {
+  messageDialog: MessageDialog;
+  open: boolean;
 }

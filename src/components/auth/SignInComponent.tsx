@@ -5,6 +5,14 @@ import { useForm } from 'react-hook-form';
 import { SignIn } from '../../interfaces';
 import { registerField } from '../../misc';
 
+
+/**
+ * SignInComponent
+ *
+ * Componente de React que renderiza el formulario de inicio de sesión.
+ * Permite al usuario ingresar sus credenciales y autenticar su sesión.
+ *
+ */
 export const SignInComponent = () => {
 
   const { signin, loading, error } = useAuth();
@@ -114,6 +122,7 @@ export const SignInComponent = () => {
               label="Contraseña"
               placeholder="Ingrese su contraseña"
               variant="outlined"
+              type="password"
               {...registerField({
                 name: 'password',
                 rules: {

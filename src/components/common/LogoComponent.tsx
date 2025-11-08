@@ -1,5 +1,10 @@
 import { Box, useTheme } from '@mui/material'
 
+/**
+ * LogoComponent
+ *
+ * Componente de React que renderiza el logotipo de la aplicación.
+  */
 const LogoComponent = () => {
   const theme = useTheme();
   return (

@@ -1,10 +1,15 @@
 import { Button, Card, CardContent, Grid, Link, TextField, Typography } from '@mui/material'
 import { Link as RouterLink, useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form';
-import { useAuth } from '../../hooks/useAuth';
+import { useAuth } from '../../hooks';
 import { Login } from '../../interfaces';
 import { registerField } from '../../misc';
 
+
+/**
+ * LoginComponent - Componente para el inicio de sesión de usuarios.
+ * @returns LoginComponent
+ */
 export const LoginComponent = () => {
 
     const { login, loading, error } = useAuth();
@@ -69,6 +74,7 @@ export const LoginComponent = () => {
                             label="Contraseña"
                             placeholder="Ingrese su contraseña"
                             variant="outlined"
+                            type="password"
                             {...registerField({
                                 name: 'password',
                                 rules: {
