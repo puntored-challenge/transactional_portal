@@ -1,12 +1,11 @@
-import { FieldErrors, UseFormRegister } from "react-hook-form";
-import { Login, SignIn } from "./auth.interface";
+import { FieldErrors, FieldValues, Path, RegisterOptions, UseFormRegister } from "react-hook-form";
 import { Recharge } from "./transaction.interface";
 
-export interface RegisterFieldProps {
-  name: "name" | "lastname" | "username" | "password";
-  rules: object;
-  register: UseFormRegister<Login | SignIn>;
-  errors: FieldErrors<Login | SignIn>;
+export interface RegisterFieldProps<T extends FieldValues> {
+  name: Path<T>;
+  rules?: RegisterOptions<T, Path<T>>;
+  register: UseFormRegister<T>;
+  errors: FieldErrors<T>;
 }
 
 export interface RegisterFieldTransactionProps {
