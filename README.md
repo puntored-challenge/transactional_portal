@@ -87,7 +87,7 @@ Este despliegue también está disponible en Vercel, ya que la instancia del bac
 Te invito a visitar el sitio web y explorar todas las funcionalidades que ofrece el portal transaccional, desde la creación de usuarios y el inicio de sesión, hasta la visualización de transacciones y la realización de recargas móviles. ¡Descubre cómo esta solución facilita tus operaciones de forma rápida y confiable!
 
 ```
-https://transaccional-portal.surge.sh
+http://transaccional-portal.surge.sh
 ```
 
 Este host tiene limitaciones por lo cual si en alguno momento se veo una pagina not found de el servicio por favor esperar alguno minutos e ir recargando hasta que el servicio este disponible
