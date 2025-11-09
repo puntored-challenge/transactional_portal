@@ -1,73 +1,92 @@
-# React + TypeScript + Vite
+# Puntored challenge
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Challenge
+Para ampliar nuestro portafolio, buscamos desarrollar un portal transaccional integral
+que ofrezca recargas a operadores móviles, pagos de servicios, compra de pines de
+contenido y transferencias bancarias. Tu desafío inicial será crear el primer módulo de
+recargas móviles, consumiendo los servicios API de Puntored. Para lograr esto, se
+requiere la construcción de una API en Spring Boot y un proyecto web en React, que
+consuman los servicios de Puntored descritos en este documento.
 
-Currently, two official plugins are available:
+### Instalación y ejecución proyecto Spring boot.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+#### Requisitos
 
-## React Compiler
+Node.js (versión recomendada: ≥ 18)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+npm o yarn
 
-## Expanding the ESLint configuration
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Ejecución
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+Clonar el repository 
+```
+  git clone https://github.com/puntored-challenge/transactional_portal.git
+  cd transactional_portal_api
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+Renombrar el archivo .env.example a .env y modificar las variables
 ```
+VITE_API_URL=http://localhost:18081/api/v1
+
+```
+
+Ejecución
+```
+npm run dev
+```
+
+
+### Solucion del challenge
+
+El objetivo de esta solución es mantener una arquitectura limpia, segura y fácil de mantener. Organicé el proyecto dividiendo claramente los componentes, layouts, hooks, servicios y utilidades para que el código sea más comprensible y escalable. Para asegurar la calidad, configuré ESLint con reglas específicas para React y TypeScript, y usé typescript-eslint para mantener la coherencia en el tipado. También desarrollé hooks personalizados que me permiten reutilizar lógica de forma ordenada. En cuanto a seguridad, validé los formularios desde el frontend y protegí las rutas privadas controlando el acceso mediante el estado global del usuario autenticado. Además, programé siguiendo el enfoque mobile first y me aseguré de que la aplicación sea completamente responsive, adaptándose correctamente a distintos tamaños de pantalla
+
+- **Framework principal**: React 19 con Vite para desarrollo rápido y compilación eficiente.
+- **Lenguaje**: TypeScript para tipado estático y mayor seguridad en tiempo de desarrollo.
+- **Gestión de estado**: Redux Toolkit para manejar el estado global de forma predecible y escalable.
+- **Enrutamiento**: React Router DOM para navegación SPA entre vistas protegidas y públicas.
+- **Estilos**: MUI + Emotion para componentes visuales modernos y estilos dinámicos.
+- **Formularios**: React Hook Form para validación eficiente y control de errores.
+- **Internacionalización**: i18next + react-i18next para soporte multilenguaje.
+- **Consumo de APIs**: Axios para comunicación con el backend.
+
+
+#### Integracion
+
+##### Rutas creadas
+
+###### Registro
+
+Esta vista te permite registrar nuevos usuarios en el portal y representa el punto de partida obligatorio para acceder a las funcionalidades transaccionales de la aplicación
+
+<img width="948" height="849" alt="image" src="https://github.com/user-attachments/assets/4d44b9c6-6356-4bce-9e76-cfba9973a577" />
+
+
+###### Login 
+
+Esta vista permite a los usuarios iniciar sesión en el portal transaccional, autenticándose con sus credenciales para acceder a las funcionalidades protegidas de la aplicación. Una vez autenticados, se les asigna un token JWT que valida su identidad y les permite interactuar con las rutas privadas del sistema de forma segura.
+
+<img width="956" height="917" alt="image" src="https://github.com/user-attachments/assets/1767ade0-d529-4c7d-8b6b-12f9990117dc" />
+
+###### Consultas
+
+Esta vista me permite visualizar todas las transacciones que he creado como usuario autenticado.
+
+<img width="961" height="878" alt="image" src="https://github.com/user-attachments/assets/afbc6ae0-85ce-4a50-9826-ba1c6dd3a7b2" />
+
+###### Recargas
+
+Este módulo permite a los usuarios realizar recargas de saldo a teléfonos móviles de forma rápida y segura. Desde esta vista, pueden seleccionar el operador, ingresar el número de celular y el monto a recargar, todo dentro de un flujo intuitivo que valida los datos antes de enviar la transacción.
+
+<img width="949" height="760" alt="image" src="https://github.com/user-attachments/assets/27e1d830-07ba-4f84-8822-9e949cf06062" />
+
+### Despliegue
+
+Este despliegue también está disponible en Vercel, ya que la instancia del backend en AWS EC2 presenta restricciones con certificados HTTPS. Por esa razón, se optó por una herramienta alterna que permite una integración más fluida y segura entre el frontend y el backend.
+
+Te invito a visitar el sitio web y explorar todas las funcionalidades que ofrece el portal transaccional, desde la creación de usuarios y el inicio de sesión, hasta la visualización de transacciones y la realización de recargas móviles. ¡Descubre cómo esta solución facilita tus operaciones de forma rápida y confiable!
+
+```
+http://transactional-portal.surge.sh/dashboard
+```
+
