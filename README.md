@@ -90,5 +90,7 @@ Te invito a visitar el sitio web y explorar todas las funcionalidades que ofrece
 http://ec2-13-222-134-242.compute-1.amazonaws.com
 ```
 
+importante: verificar que la url este en http, esta conexion genera que algunas periciones sean bloqueadas
 
-
+usuario de prueba: administrador
+contraseña: administrador
