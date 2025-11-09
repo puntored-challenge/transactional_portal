@@ -90,3 +90,6 @@ Te invito a visitar el sitio web y explorar todas las funcionalidades que ofrece
 http://transactional-portal.surge.sh/dashboard
 ```
 
+Este host tiene limitaciones por lo cual si en alguno momento se veo una pagina not found de el servicio por favor esperar alguno minutos e ir recargando hasta que el servicio este disponible
+
+
