@@ -82,14 +82,13 @@ Este módulo permite a los usuarios realizar recargas de saldo a teléfonos móv
 
 ### Despliegue
 
-Este despliegue también está disponible en Vercel, ya que la instancia del backend en AWS EC2 presenta restricciones con certificados HTTPS. Por esa razón, se optó por una herramienta alterna que permite una integración más fluida y segura entre el frontend y el backend.
+Este despliegue también está disponible en Vercel, ya que la instancia del backend en AWS EC2 presenta restricciones con certificados HTTPS. Por esa razón, se optó usar la misma instancia de EC2.
 
 Te invito a visitar el sitio web y explorar todas las funcionalidades que ofrece el portal transaccional, desde la creación de usuarios y el inicio de sesión, hasta la visualización de transacciones y la realización de recargas móviles. ¡Descubre cómo esta solución facilita tus operaciones de forma rápida y confiable!
 
 ```
-http://transaccional-portal.surge.sh
+http://ec2-13-222-134-242.compute-1.amazonaws.com
 ```
 
-Este host tiene limitaciones por lo cual si en alguno momento se veo una pagina not found de el servicio por favor esperar alguno minutos e ir recargando hasta que el servicio este disponible
 
 
